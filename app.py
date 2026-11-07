@@ -25,9 +25,9 @@ from sklearn.metrics import (
 from train_models import MODEL_FILES
 
 
-# --------------------------------------------------
+
 # 1. Page configuration
-# --------------------------------------------------
+
 
 ROOT = Path(__file__).resolve().parent
 
@@ -50,9 +50,7 @@ st.info(
 )
 
 
-# --------------------------------------------------
 # 2. Load trained models and test data
-# --------------------------------------------------
 
 @st.cache_resource
 def load_models():
@@ -85,9 +83,7 @@ features = [
 ]
 
 
-# --------------------------------------------------
 # 3. Sidebar controls with GO button
-# --------------------------------------------------
 
 st.sidebar.header("Controls")
 
@@ -110,7 +106,7 @@ with st.sidebar.form("classifier_form"):
     )
 
 
-# Save selection when GO is clicked
+
 if go_button:
 
     st.session_state["show_results"] = True
@@ -123,7 +119,6 @@ if go_button:
         st.session_state["uploaded_data"] = None
 
 
-# Do not show results before GO
 if not st.session_state.get("show_results", False):
 
     st.info(
@@ -134,7 +129,7 @@ if not st.session_state.get("show_results", False):
     st.stop()
 
 
-# Retrieve confirmed selection
+
 selected = st.session_state["selected_model"]
 
 if st.session_state.get("uploaded_data") is not None:
@@ -152,9 +147,7 @@ st.success(
 )
 
 
-# --------------------------------------------------
 # 4. Evaluation metrics for all five models
-# --------------------------------------------------
 
 st.subheader("Held-out test-set performance")
 
@@ -220,18 +213,14 @@ st.caption(
 )
 
 
-# --------------------------------------------------
 # 5. Selected classifier
-# --------------------------------------------------
 
 model = models[selected]
 
 pred = model.predict(X_test)
 
 
-# --------------------------------------------------
 # 6. Confusion matrix and ROC curves
-# --------------------------------------------------
 
 left, right = st.columns(2)
 
@@ -328,9 +317,7 @@ with right:
     plt.close(fig)
 
 
-# --------------------------------------------------
 # 7. Predictions
-# --------------------------------------------------
 
 st.subheader("Predictions")
 
@@ -360,9 +347,8 @@ else:
         st.stop()
 
 
-# --------------------------------------------------
+
 # 8. Validate uploaded data
-# --------------------------------------------------
 
 missing = [
     col for col in features
@@ -398,9 +384,7 @@ else:
             )
 
 
-        # ------------------------------------------
         # 9. Generate predictions
-        # ------------------------------------------
 
         predictions = model.predict(
             input_features
@@ -432,9 +416,7 @@ else:
         )
 
 
-        # ------------------------------------------
         # 10. Download prediction results
-        # ------------------------------------------
 
         st.download_button(
             label="Download predictions CSV",
