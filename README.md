@@ -50,7 +50,11 @@ An **80:20 stratified train-test split** with `random_state=42` is used to ensur
 
 The repository contains the Streamlit application (`app.py`), model training source code (`train_models.py`), `requirements.txt`, `README.md`, test dataset (`test_data.csv`), and five saved classification models in `.joblib` format, along with the evaluation metrics CSV file.
 
-## d. Models Used and Evaluation Metrics
+## d. Streamlit app Link
+
+**Streamlit app:** https://mlappdetectbreastcancer-mvfddwdh5zz3hcfdiu2toq.streamlit.app/
+
+## e. Models Used and Evaluation Metrics
 
 Five classification algorithms were implemented and evaluated on the same held-out test dataset.
 
